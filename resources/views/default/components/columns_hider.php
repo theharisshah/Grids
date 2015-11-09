@@ -36,7 +36,7 @@
     </div>
 </span>
 <script>
-    $(function () {
+    (function ($) {
 
         var cookie = {
             set: function (name, value, options) {
@@ -200,6 +200,6 @@
         );
         ch.setup();
         ch.saveValues();
-    });
+    })(jQuery);
 
 </script>
