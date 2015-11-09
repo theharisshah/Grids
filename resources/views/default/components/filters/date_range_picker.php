@@ -17,7 +17,7 @@ $id = uniqid();
     >
 
 <script>
-    $(function(){
+    (function($){
         var options = <?= json_encode($component->getJsOptions())?>;
         if (!options.format) {
             options.format = 'YYYY-MM-DD';
@@ -48,8 +48,7 @@ $id = uniqid();
             moment("<?= $component->getStartValue() ?>"),
             moment("<?= $component->getEndValue() ?>")
         );
-    })
+    })(jQuery);
 </script>
 <?= Form::hidden($component->getStartInputName(), $component->getStartValue()) ?>
 <?= Form::hidden($component->getEndInputName(), $component->getEndValue()) ?>
-

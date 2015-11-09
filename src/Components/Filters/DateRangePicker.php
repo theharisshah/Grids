@@ -113,35 +113,22 @@ class DateRangePicker extends Filter
         $res = [
             'format' => 'YYYY-MM-DD',
             'ranges' => [
-                'previous_month' => [
-                    'Previous month (' . $prev_month->format('F') . ')',
-                    [
-                        $prev_month->startOfMonth()->format('Y-m-d'),
-                        $prev_month->endOfMonth()->format('Y-m-d'),
-                    ]
+                'Previous Month (' . $prev_month->format('F') . ')' => [
+                    $prev_month->startOfMonth()->format('Y-m-d'),
+                    $prev_month->endOfMonth()->format('Y-m-d'),
                 ],
-                'current_month' => [
-                    'Cur. month (' . date('F'). ')',
-                    [
-                        $carbon->startOfMonth()->format('Y-m-d'),
-                        $carbon->endOfMonth()->format('Y-m-d')
-                    ]
+                'This Month (' . date('F'). ')' => [
+                    $carbon->startOfMonth()->format('Y-m-d'),
+                    $carbon->endOfMonth()->format('Y-m-d')
                 ],
-                'last_week' => [
-                    'This Week',
-                    [
-                        $carbon->startOfWeek()->format('Y-m-d'),
-                        $carbon->endOfWeek()->format('Y-m-d')
-                    ]
+                'This Week' => [
+                    $carbon->startOfWeek()->format('Y-m-d'),
+                    $carbon->endOfWeek()->format('Y-m-d')
                 ],
-                'last_14' => [
-                    'Last 14 days',
-                    [
-                        Carbon::now()->subDays(13)->format('Y-m-d'),
-                        $today->format('Y-m-d')
-                    ]
-                ],
-
+                'Last 14 days' => [
+                    Carbon::now()->subDays(13)->format('Y-m-d'),
+                    $today->format('Y-m-d')
+                ]
             ],
         ];
         // will not set dates when '' passed but set default date when null passed
