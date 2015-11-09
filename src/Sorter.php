@@ -17,7 +17,7 @@ class Sorter
 
     /**
      * Constructor.
-     * 
+     *
      * @param Grid $grid
      */
     public function __construct(Grid $grid)
@@ -51,6 +51,8 @@ class Sorter
                 $sort = [$field, $direction];
                 break;
             }
+        } else{
+            $sort = $this->grid->getConfig()->getDefaultSort();
         }
         foreach ($this->grid->getConfig()->getColumns() as $column) {
             if ($sort) {

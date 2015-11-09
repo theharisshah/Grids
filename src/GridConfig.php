@@ -27,6 +27,8 @@ class GridConfig implements RegistryInterface
 
     protected $page_size = 50;
 
+    protected $defaultSort = null;
+
     /** @var Collection|FilterConfig[] $filters */
     protected $filters;
 
@@ -242,5 +244,15 @@ class GridConfig implements RegistryInterface
     public function getPageSize()
     {
         return $this->page_size;
+    }
+
+    public function setDefaultSort($columnName, $direction)
+    {
+        $this->defaultSort = [$columnName, $direction];
+    }
+
+    public function getDefaultSort()
+    {
+        return $this->defaultSort;
     }
 }
