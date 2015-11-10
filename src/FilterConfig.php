@@ -120,6 +120,8 @@ class FilterConfig
 
     public function getId()
     {
-        return $this->getName() . '-' . urlencode($this->getOperator());
+        $operator = $this->getOperator();
+        $operator = str_replace('=', 'eq', $operator);
+        return $this->getName() . '-' . $operator;
     }
 }
