@@ -139,11 +139,13 @@
             if(name === 'all') {
                 $.each(this.getValues(), function(i){
                     me.getValues()[i] = value;
-                    $('input[name='+i+']').prop('checked', value);
+                    i = i.replace('.', "\\.");
+                    $('input[name="'+i+'"]').prop('checked', value);
                     me.updateColumnVisibility(i, value);
                 });
             } else {
                 this.getValues()[name] = value;
+                name = name.replace('.', "\\.");
                 this.updateColumnVisibility(name, value);
             }
             this.checkAll();
