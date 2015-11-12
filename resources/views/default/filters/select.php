@@ -12,7 +12,7 @@ if (method_exists($cfg, 'isSubmittedOnChange') && $cfg->isSubmittedOnChange()) {
     name="<?= $filter->getInputName() ?>"
     <?= $onchange ?>
     >
-    <option value="">--//--</option>
+    <option value=""></option>
     <?php foreach ($filter->getConfig()->getOptions() as $value => $label): ?>
         <?php
         $maybe_selected = (

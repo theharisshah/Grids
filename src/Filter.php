@@ -65,6 +65,7 @@ class Filter
         if ($from_input === null) {
             return $this->config->getDefaultValue();
         } else {
+            $this->config->setCookie($from_input);
             return $from_input;
         }
     }

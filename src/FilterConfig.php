@@ -90,6 +90,10 @@ class FilterConfig
 
     public function getDefaultValue()
     {
+        $key = $this->getId();
+        if (isset($_COOKIE[$key])) {
+            return $_COOKIE[$key];
+        }
         return $this->default_value;
     }
 
@@ -120,8 +124,17 @@ class FilterConfig
 
     public function getId()
     {
+        $name = $this->getName();
+        $name = str_replace('.', '-', $name);
         $operator = $this->getOperator();
         $operator = str_replace('=', 'eq', $operator);
-        return $this->getName() . '-' . $operator;
+        return $name . '-' . $operator;
+    }
+
+    public function setCookie($value){
+        /**
+         * Cookie set for 7 days
+         */
+        setcookie($this->getId(), $value, time()+60*60*24*7);
     }
 }
