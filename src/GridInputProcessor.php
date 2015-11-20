@@ -197,4 +197,8 @@ class GridInputProcessor
         . $request->getPathInfo()
         . $query_string;
     }
+
+    public function getSelectedRows(){
+        return Input::get('selected', null);
+    }
 }

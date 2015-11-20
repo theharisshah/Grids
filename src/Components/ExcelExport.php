@@ -165,19 +165,23 @@ class ExcelExport extends RenderableComponent
         /** @var $provider DataProvider */
         $provider = $this->grid->getConfig()->getDataProvider();
 
+        $selected = $this->grid->getInputProcessor()->getSelectedRows();
+
         $exportData[] = $this->getHeaderRow();
 
         $this->resetPagination($provider);
         $provider->reset();
         /** @var DataRow $row */
         while ($row = $provider->getRow()) {
-            $output = [];
-            foreach ($this->grid->getConfig()->getColumns() as $column) {
-                if ($this->isColumnExported($column)) {
-                    $output[] = $this->escapeString($column->getValue($row));
+            if($selected == null || in_array($row->getSrc()->id, $selected)){
+                $output = [];
+                foreach ($this->grid->getConfig()->getColumns() as $column) {
+                    if ($this->isColumnExported($column)) {
+                        $output[] = $this->escapeString($column->getValue($row));
+                    }
                 }
+                $exportData[] = $output;
             }
-            $exportData[] = $output;
         }
         return $exportData;
     }
