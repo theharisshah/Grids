@@ -7,8 +7,8 @@ echo \Form::select(
     $component->getValue(),
     [
         'class' => "form-control input-sm grids-control-records-per-page",
-        'style' => 'display: inline; width: 50px; margin-right: 10px'
+        'style' => 'display: inline; width: auto;'
     ]
 );
 ?>
-<span> per page</span>
+<span style="margin-right: 10px"> per page</span>
