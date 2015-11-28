@@ -109,26 +109,35 @@ class DateRangePicker extends Filter
     {
         $carbon = new Carbon();
         $prev_month = Carbon::now()->startOfMonth()->subWeek();
-        $today = Carbon::now();
+        $today = Carbon::today();
+        $yesterday = Carbon::yesterday();
         $res = [
             'format' => 'YYYY-MM-DD',
             'ranges' => [
-                'Previous Month (' . $prev_month->format('F') . ')' => [
-                    $prev_month->startOfMonth()->format('Y-m-d'),
-                    $prev_month->endOfMonth()->format('Y-m-d'),
+                'Today' => [
+                    $today->format('Y-m-d'),
+                    $today->format('Y-m-d')
                 ],
-                'This Month (' . date('F'). ')' => [
-                    $carbon->startOfMonth()->format('Y-m-d'),
-                    $carbon->endOfMonth()->format('Y-m-d')
+                'Previous Day' => [
+                    $yesterday->format('Y-m-d'),
+                    $yesterday->format('Y-m-d')
                 ],
                 'This Week' => [
                     $carbon->startOfWeek()->format('Y-m-d'),
                     $carbon->endOfWeek()->format('Y-m-d')
                 ],
-                'Last 14 days' => [
-                    Carbon::now()->subDays(13)->format('Y-m-d'),
-                    $today->format('Y-m-d')
-                ]
+                'This Month (' . date('F'). ')' => [
+                    $carbon->startOfMonth()->format('Y-m-d'),
+                    $carbon->endOfMonth()->format('Y-m-d')
+                ],
+                'Previous Month (' . $prev_month->format('F') . ')' => [
+                    $prev_month->startOfMonth()->format('Y-m-d'),
+                    $prev_month->endOfMonth()->format('Y-m-d'),
+                ],
+                // 'Last 14 days' => [
+                //     Carbon::now()->subDays(13)->format('Y-m-d'),
+                //     $today->format('Y-m-d')
+                // ]
             ],
         ];
         $res['opens'] = 'left';
