@@ -131,6 +131,7 @@ class DateRangePicker extends Filter
                 ]
             ],
         ];
+        $res['opens'] = 'left';
         // will not set dates when '' passed but set default date when null passed
         if ($this->getStartValue()) {
             $res['startDate'] = $this->getStartValue();

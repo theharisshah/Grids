@@ -10,7 +10,7 @@ $id = uniqid();
 <?php endif ?>
 <input
     class="form-control input-sm"
-    style="display: inline; width: 165px; margin-right: 10px"
+    style="display: inline;"
     name="<?= $component->getInputName() ?>"
     type="text"
     id="<?= $id ?>"
