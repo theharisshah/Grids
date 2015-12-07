@@ -25,7 +25,7 @@ class ExcelExport extends RenderableComponent
 {
     const NAME = 'excel_export';
     const INPUT_PARAM = 'xls';
-    const DEFAULT_ROWS_LIMIT = 5000;
+    const DEFAULT_ROWS_LIMIT = 15000;
 
     protected $template = '*.components.excel_export';
     protected $name = ExcelExport::NAME;
