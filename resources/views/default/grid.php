@@ -13,6 +13,6 @@
 </tbody>
 <?= $grid->footer() ? $grid->footer()->render() : '' ?>
 <?php # Hidden input for submitting form by pressing enter if there are no other submits ?>
-<input type="submit" style="display: none;" />
+<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
 </table>
 </form>
