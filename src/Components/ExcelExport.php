@@ -155,7 +155,9 @@ class ExcelExport extends RenderableComponent
     protected function isColumnExported(FieldConfig $column)
     {
         return !in_array($column->getName(), $this->getIgnoredColumns())
-            && ($this->isHiddenColumnsExported() || !$column->isHidden());
+            && ($this->isHiddenColumnsExported() || !$column->isHidden())
+            && $column->getName() != 'select_column'
+            && $column->getName() != 'action_column';
     }
 
     protected function getData()
