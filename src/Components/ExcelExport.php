@@ -31,7 +31,7 @@ class ExcelExport extends RenderableComponent
     protected $name = ExcelExport::NAME;
     protected $render_section = RenderableRegistry::SECTION_END;
     protected $rows_limit = self::DEFAULT_ROWS_LIMIT;
-    protected $extension = 'xlsx';
+    protected $extension = 'xls';
 
     /**
      * @var string
