@@ -31,7 +31,7 @@ class ExcelExport extends RenderableComponent
     protected $name = ExcelExport::NAME;
     protected $render_section = RenderableRegistry::SECTION_END;
     protected $rows_limit = self::DEFAULT_ROWS_LIMIT;
-    protected $extension = 'xls';
+    protected $extension = 'xlsx';
 
     /**
      * @var string
@@ -177,7 +177,16 @@ class ExcelExport extends RenderableComponent
                 $output = [];
                 foreach ($this->grid->getConfig()->getColumns() as $column) {
                     if ($this->isColumnExported($column)) {
-                        $output[] = $this->escapeString($column->getValue($row));
+                        $value = $this->escapeString($column->getValue($row));
+                        if($column->getFormat() == 'integer'){
+                            $output[] = intval($value);
+                        }
+                        elseif($column->getFormat() == 'float'){
+                            $output[] = floatval($value);
+                        }
+                        else{
+                            $output[] = $value;
+                        }
                     }
                 }
                 $exportData[] = $output;

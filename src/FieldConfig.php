@@ -48,6 +48,8 @@ class FieldConfig
 
     protected $styleAttributes = '';
 
+    protected $format = 'string';
+
     /**
      * Constructor.
      *
@@ -342,5 +344,13 @@ class FieldConfig
 
     public function getStyleAttributes(){
         return $this->styleAttributes;
+    }
+
+    public function setFormat($format){
+        $this->format = $format;
+    }
+
+    public function getFormat(){
+        return $this->format;
     }
 }
