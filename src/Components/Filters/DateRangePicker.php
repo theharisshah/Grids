@@ -34,10 +34,11 @@ class DateRangePicker extends Filter
      */
     public function getJsOptions()
     {
+        $defaultOptions = $this->getDefaultJsOptions();
         if (!$this->js_options) {
-            $this->js_options = $this->getDefaultJsOptions();
+            return $defaultOptions;
         }
-        return $this->js_options;
+        return array_merge($defaultOptions, $this->js_options);
     }
 
     /**
