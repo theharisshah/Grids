@@ -130,9 +130,9 @@ class GridInputProcessor
                 setcookie($cookieName, $value, time()+60*60*24*7);
                 return $value;
             }
-            unset($_COOKIE[$cookieName]);
+            setcookie($cookieName);
         }
-        if (isset($_COOKIE[$cookieName])) {
+        else if (isset($_COOKIE[$cookieName])) {
             return $_COOKIE[$cookieName];
         }
         return null;
