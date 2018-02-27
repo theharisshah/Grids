@@ -123,11 +123,19 @@ class GridInputProcessor
      */
     public function getFilterValue($filterName)
     {
-        if (isset($this->input['filters'][$filterName])) {
-            return $this->input['filters'][$filterName];
-        } else {
-            return null;
+        $cookieName = $this->getKey() . '-filters-' . $filterName;
+        if (isset($this->input['filters']) && array_key_exists($filterName, $this->input['filters'])) {
+            if (isset($this->input['filters'][$filterName])) {
+                $value = $this->input['filters'][$filterName];
+                setcookie($cookieName, $value, time()+60*60*24*7);
+                return $value;
+            }
+            unset($_COOKIE[$cookieName]);
         }
+        if (isset($_COOKIE[$cookieName])) {
+            return $_COOKIE[$cookieName];
+        }
+        return null;
     }
 
     /**

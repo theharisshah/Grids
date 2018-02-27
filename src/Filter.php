@@ -62,17 +62,10 @@ class Filter
             ->grid
             ->getInputProcessor()
             ->getFilterValue($this->config->getId());
-        $key = $this->grid->getInputProcessor()->getKey();
-        $cookieName = $key . '-filters-' . $this->config->getId();
         if ($from_input === null) {
-            if (isset($_COOKIE[$cookieName])) {
-                return $_COOKIE[$cookieName];
-            }
             return $this->config->getDefaultValue();
-        } else {
-            $this->config->setCookie($cookieName, $from_input);
-            return $from_input;
         }
+        return $from_input;
     }
 
     /**
