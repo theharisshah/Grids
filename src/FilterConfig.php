@@ -28,6 +28,8 @@ class FilterConfig
     /** @var  callable */
     protected $filtering_func;
 
+    protected $data = [];
+
     public function getOperator()
     {
         return $this->operator;
@@ -125,6 +127,17 @@ class FilterConfig
         $operator = $this->getOperator();
         $operator = str_replace('=', 'eq', $operator);
         return $name . '-' . $operator;
+    }
+
+    public function set($key, $value)
+    {
+        $this->data[$key] = $value;
+        return $this;
+    }
+
+    public function get($key)
+    {
+        return array_key_exists($key, $this->data) ? $this->data[$key] : null;
     }
 
     public function setCookie($name, $value){
