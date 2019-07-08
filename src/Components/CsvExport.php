@@ -22,7 +22,7 @@ class CsvExport extends RenderableComponent
 {
     const NAME = 'csv_export';
     const INPUT_PARAM = 'csv';
-    const CSV_DELIMITER = ';';
+    const CSV_DELIMITER = ',';
     const CSV_EXT = '.csv';
     const DEFAULT_ROWS_LIMIT = 5000;
 
