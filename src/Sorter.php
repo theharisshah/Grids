@@ -48,6 +48,9 @@ class Sorter
         $sort = null;
         if (isset($input['sort'])) {
             foreach ($input['sort'] as $field => $direction) {
+                if(is_null($direction)){
+                    $direction = 'desc';
+                }
                 $sort = [$field, $direction];
                 break;
             }
