@@ -48,11 +48,10 @@ class Sorter
         $sort = null;
         if (isset($input['sort'])) {
             foreach ($input['sort'] as $field => $direction) {
-                if(is_null($direction)){
-                    $direction = 'desc';
+                if(!is_null($direction)) {
+                    $sort = [$field, $direction];
+                    break;
                 }
-                $sort = [$field, $direction];
-                break;
             }
         } else{
             $sort = $this->grid->getConfig()->getDefaultSort();
